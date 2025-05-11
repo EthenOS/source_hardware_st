@@ -1,4 +1,4 @@
-ETHEN_MAIN_OUT = ../../../out/
+ETHEN_MAIN_OUT = ../../../out
 
 MANUFACTURER ?= ethen
 DEVICE ?= watch
@@ -12,5 +12,8 @@ AR = ${PREFIX}-ar
 
 CFLAGS = -I${KERNEL_SRC_DIR}/include -I${DEVICE_SRC_INC} -I${KERNEL_SRC_DIR}/portable/GCC/ARM_CM4/ -mcpu=cortex-m4 -specs=nano.specs
 
-build:
-	${CC} startup.s -c ${CFLAGS}
+build: folder
+	${CC} startup.s -c -o ${ETHEN_MAIN_OUT}/products/hal/startup.o ${CFLAGS}
+
+folder:
+	mkdir -p ${ETHEN_MAIN_OUT}/products/hal/
