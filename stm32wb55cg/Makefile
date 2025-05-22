@@ -1,5 +1,7 @@
 ETHEN_MAIN_OUT = ../../../out
 
+V = @
+
 MANUFACTURER ?= ethen
 DEVICE ?= watch
 
@@ -10,10 +12,10 @@ CC = ${PREFIX}-gcc
 CXX = ${PREFIX}-g++
 AR = ${PREFIX}-ar
 
-CFLAGS = -I${KERNEL_SRC_DIR}/include -I${DEVICE_SRC_INC} -I${KERNEL_SRC_DIR}/portable/GCC/ARM_CM4/ -mcpu=cortex-m4 -specs=nano.specs
+CFLAGS = -I${KERNEL_SRC_DIR}/include -I${DEVICE_SRC_INC} -I${KERNEL_SRC_DIR}/portable/GCC/ARM_CM4/ -mcpu=cortex-m4 -specs=nano.specs -T link.lds
 
 build: folder
-	${CC} startup.s -c -o ${ETHEN_MAIN_OUT}/products/hal/startup.o ${CFLAGS}
+	${V} ${CC} startup.s -c -o ${ETHEN_MAIN_OUT}/products/hal/startup.o ${CFLAGS}
 
 folder:
-	mkdir -p ${ETHEN_MAIN_OUT}/products/hal/
+	${V} mkdir -p ${ETHEN_MAIN_OUT}/products/hal/

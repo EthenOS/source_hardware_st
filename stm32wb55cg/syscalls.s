@@ -5,4 +5,5 @@
 
 .thumb_func
 _init:
-    
+   mov  r0, =0x20030000
+   mov  sp, r0
