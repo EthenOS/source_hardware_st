@@ -16,6 +16,8 @@ CFLAGS = -I${KERNEL_SRC_DIR}/include -I${DEVICE_SRC_INC} -I${KERNEL_SRC_DIR}/por
 
 build: folder
 	${V} ${CC} startup.s -c -o ${ETHEN_MAIN_OUT}/products/hal/startup.o ${CFLAGS}
+	${V} ${CC} init.s -c -o ${ETHEN_MAIN_OUT}/products/hal/init.o ${CFLAGS}
+	${V} ${AR} rcs ${ETHEN_MAIN_OUT}/products/hal/libhal.a ${ETHEN_MAIN_OUT}/products/hal/*.o
 
 folder:
 	${V} mkdir -p ${ETHEN_MAIN_OUT}/products/hal/
